@@ -15,21 +15,35 @@ public class WordAlgo {
         Random random = new Random();
         StringBuilder placeHolder = new StringBuilder();
         int num = random.nextInt(0, selectedWord.length());
-        for (int i = 0; i < selectedWord.length() - 1; i++) {
+        for (int i = 0; i <= selectedWord.length() - 1; i++) {
             placeHolder.append(i == num ? selectedWord.charAt(i) : '_');
         }
         return placeHolder.toString();
     }
 
-    public void revealCorrectChar(char letter){
+    public boolean revealCorrectChar(char letter){
         StringBuilder updateClueWord = new StringBuilder();
+        boolean hasChanged = false;
         for (int i = 0; i < this.clueWord.length(); i++){
-            updateClueWord.append(this.clueWord.charAt(i) == letter ? letter : '_');
+            updateClueWord.append(this.selectedWord.charAt(i) == letter  ? letter : this.clueWord.charAt(i));
+            if (this.selectedWord.charAt(i) == letter){
+                hasChanged = true;
+            }
         }
         this.clueWord = updateClueWord.toString();
+        return hasChanged;
     }
 
     public String ClueWord() {
         return this.clueWord;
+    }
+
+    public boolean allMatch(){
+        for (int i = 0; i <= this.clueWord.length(); i++){
+            if (this.clueWord.charAt(i) == '_'){
+                return false;
+            }
+        }
+        return true;
     }
 }
