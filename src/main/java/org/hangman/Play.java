@@ -30,5 +30,6 @@ public class Play {
                 break;
             }
         }
+        scan.close();
     }
 }
