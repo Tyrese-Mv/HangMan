@@ -1,9 +1,10 @@
 package org.hangman;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Play {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         WordGenerator wordGen = new WordGenerator();
 
         WordAlgo game = new WordAlgo(wordGen.wordPicker());
@@ -23,7 +24,7 @@ public class Play {
                 System.out.println("Great, you got matching characters");
             } else{
                 lives--;
-                System.out.println(lives == 0 ? "Game over\n" + hangman.getArt(lives): "Wrong guess!!");
+                System.out.println(lives == 0 ? "Game over\n" + hangman.getArt(lives) + "\nThe word was "+ game.getSelectedWord(): "Wrong guess!!");
             }
             if (game.allMatch()){
                 System.out.println("You have found all the hidden letters\nGame Over!!");

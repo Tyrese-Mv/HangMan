@@ -39,11 +39,15 @@ public class WordAlgo {
     }
 
     public boolean allMatch(){
-        for (int i = 0; i <= this.clueWord.length(); i++){
+        for (int i = 0; i < this.clueWord.length(); i++){
             if (this.clueWord.charAt(i) == '_'){
                 return false;
             }
         }
         return true;
+    }
+
+    public String getSelectedWord() {
+        return this.selectedWord;
     }
 }

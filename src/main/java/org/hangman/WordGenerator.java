@@ -1,36 +1,12 @@
 package org.hangman;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.IOException;
 
 public class WordGenerator {
-    private ArrayList<String> words;
 
-    public WordGenerator(){
-        this.words =  new ArrayList<>();
-        GenerateRandomWords();
-    }
+    public WordGenerator(){}
 
-    public void GenerateRandomWords(){
-        final int MAX = 5;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter words of your choice!");
-        String word;
-        for (int i = 1; i <= MAX; i++){
-            word = scanner.nextLine();
-            fillWordList(word);
-            System.out.println("Enter another word, choices " + (MAX - i) + " left.");
-        }
-        System.out.println("\nGet Ready to play.");
-    }
-
-    private void fillWordList(String word){
-        this.words.add(word);
-    }
-
-    public String wordPicker(){
-        Random random = new Random();
-        return this.words.get(random.nextInt(0,this.words.size()));
+    public String wordPicker() throws IOException {
+        return new GetWord().getSelectedWord();
     }
 }
